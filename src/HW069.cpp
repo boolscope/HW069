@@ -1,4 +1,4 @@
-#include "hw069.h"
+#include "HW069.h"
 
 // Map of characters to their 7-segment display binary codes.
 const std::map<char, uint8_t> HW069::SEGMENTS = {
@@ -56,7 +56,19 @@ const std::map<char, uint8_t> HW069::SEGMENTS = {
 
 // Bitmaps for the snake animation segments.
 const uint8_t HW069::SEGMENT_MAP[12] = {
-    0b00000001, 0b00000001, 0b00000001, 0b00000001, 0b00000010, 0b00000100, 0b00001000, 0b00001000, 0b00001000, 0b00001000, 0b00010000, 0b00100000};
+    0b00000001,
+    0b00000001,
+    0b00000001,
+    0b00000001,
+    0b00000010,
+    0b00000100,
+    0b00001000,
+    0b00001000,
+    0b00001000,
+    0b00001000,
+    0b00010000,
+    0b00100000,
+};
 
 // Positions for the snake animation digits.
 const uint8_t HW069::DIGIT_POS[12] = {0, 1, 2, 3, 3, 3, 3, 2, 1, 0, 0, 0};
@@ -70,12 +82,9 @@ HW069::HW069(uint8_t clkPin, uint8_t dioPin, uint8_t brightness)
 // Returns the segment representation for the given character.
 uint8_t HW069::getSegmentForChar(char c) {
     auto it = SEGMENTS.find(c);
-    if (it != SEGMENTS.end())
-    {
+    if (it != SEGMENTS.end()) {
         return it->second;
-    }
-    else
-    {
+    } else {
         return 0b01000000;  // '-' for unknown characters
     }
 }
